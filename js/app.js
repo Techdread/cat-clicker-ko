@@ -41,13 +41,19 @@ var ViewModel = function() {
 
     this.catList = ko.observableArray([]);
 
+    
+
     initialCats.forEach(function(catItem){
         self.catList.push( new Cat(catItem) );
     });
 
-    self.currentCat = ko.observable( this.catList()[0] );
+    this.currentCat = ko.observable( this.catList()[0] );
 
-    self.incrementCounter = function() {
+    this.showCat = function(data) {
+        self.currentCat(data);
+    };
+    
+    this.incrementCounter = function() {
         self.currentCat().clickCount(self.currentCat().clickCount() + 1);
     };
 }
